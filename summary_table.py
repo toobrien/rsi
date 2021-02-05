@@ -35,7 +35,7 @@ with open(SUMMARY_PATH, "r") as fd:
             )))
         values.append(", ".join((
             str(record["duration"]["mean"]),
-            str(record["duration"]["mean"])
+            str(record["duration"]["stdev"])
         )))
         #print(dumps(values, indent = 2))
         records.append("|".join(values))
