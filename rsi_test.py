@@ -114,6 +114,7 @@ def summarize(results):
 
     res = {
         "test": {
+            "group": results[0]["group"],
             "type": results[0]["type"],
             "enter": results[0]["enter"],
             "exit": results[0]["exit"],
@@ -146,7 +147,11 @@ def summarize(results):
     for statistic in [ "mae", "mfe", "pnl" ]:
         E = std.zscore(alpha / 2) * res[statistic]["stdev"] / sqrt(res["test"]["samples"])
         mu = res[statistic]["mean"]
-        res[statistic][f"interval({alpha})"] = [ round(mu - E, 2 * precision), round(mu + E, 2 * precision) ]
+        res[statistic][f"interval"] = { 
+            "lower": round(mu - E, 2 * precision),
+            "upper": round(mu + E, 2 * precision),
+            "alpha": 1 - alpha
+        }
 
     return res
 
@@ -189,7 +194,7 @@ def get_control(x_):
     
 
 
-def test(security, x_, rsi_, type, enter, exit):
+def test(security, x_, rsi_, group, type, enter, exit):
     experiment_state = state.A
     results = []
     bad_records = 0
@@ -219,6 +224,7 @@ def test(security, x_, rsi_, type, enter, exit):
                     "close_price": price,
                     "end_index": i,
                     "security": security,
+                    "group": group,
                     "type": type,
                     "enter": enter,
                     "exit": exit
@@ -271,7 +277,7 @@ def run_test():
                 for t in TESTS: 
                     result = test(
                         security, x_, rsi_,
-                        t["type"], t["enter"], t["exit"]
+                        "experiment", t["type"], t["enter"], t["exit"]
                     )
                     if len(result) == 0:
                         print(f"security excluded: {security}")
@@ -280,7 +286,7 @@ def run_test():
                         results += result   
                         control_results += test(
                             security, x_, control_,
-                            t["type"], t["enter"], t["exit"]
+                            "control", t["type"], t["enter"], t["exit"]
                         )
             except (RsiError, UnicodeDecodeError):
                 bad_records += 1
