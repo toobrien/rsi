@@ -39,6 +39,8 @@ To produce the results, the trades are aggregated into twelve groups, six for tr
 
 The confidence intervals for these measures can be used to determine whether the RSI generated trades fare any more profitably than the control group trades, which are entered on random signals.
 
+I excluded the top and bottom 1% of measures, which had an outsized effect on the results.
+
 ## Results
 
 For mae, mfe, and pnl, the results are expressed as mean, standard deviation, and 99% confidence interval. All units are expressed as continuously compounded percentage return from the opening price level. For duration, the mean and standard deviation are given. The units are days.
@@ -60,8 +62,12 @@ control|long|10|50|121|0.01, 0.048, (0.009978, 0.010022)|0.017, 0.071, (0.016968
 
 ## Conclusion
 
-Perhaps owing to an upward bias in recent stock returns, the control group longs performed slightly better than break even, while the shorts performed considerably worse. The trade duration, being proportional from the distance between entry and exit levels, effected greater profits and losses, accordingly. The experimental group, by contract, profited both long and short. Once again, the performance was proportional to the distance between entry and exit RSI levels. The 90, short trade had the second highest mean return (7.5%) and the 10, long trade had the best returns of all groups (9.9%). Differences at every level were significant according to the 99% confidence interval.
+Perhaps owing to an upward bias in recent stock returns, the control group longs performed slightly better than break even, while the shorts performed considerably worse. The trade duration, being proportional from the distance between entry and exit levels, effected greater profits and losses, accordingly. The experimental group, by contrast, profited both long and short. Once again, the performance was proportional to the distance between entry and exit RSI levels. The 90, short trade had the second best mean return (7.5%) and the 10, long trade had the best returns of all groups (9.9%). Differences at every level were significant, according to the 99% confidence interval.
 
 Although the experimental group RSI trades were profitable at the most extreme levels (90 short, 10 long), they were substantially less profitable at the 70 and 30 levels most commonly used by traders, with a mean profit of 0.4% and 1.6%, respectively. Furthermore, maximum adverse excursion was substantially higher than the returns, and higher than the maximum favorable excursion for the 70 and 80 short trades. Of the short trades, only the 90 level provided favorable reward-to-risk, although even this trade's pnl was worse than its mae. On the long side, all three trades provided favorable reward-to-risk when comparing mae to mfe, although mae still exceeded pnl except at the most extreme level (10).
 
 In summary, the RSI provided better-than-random signals for price reversals at each level tested, and the signal was better at more extreme levels. However, the reward-to-risk characteristics of the short, "oversold" trades are not favorable, except at the most extreme level. On the long side, the signal is better from a reward-to-risk perspective, though this may be explained by market bias. It is worth noting that the most extreme levels (90, 10) occur relatively rarely, and the more commonly used "overbought" and "oversold" levels (70 and 30, respectively) did not have favorable pnl to mae.
+
+## Further study
+
+To improve the study, I would like to normalize the mae, mfe, and pnl measures by the underlying security's volatility. I would also include measures less sensitive to outliers, or study the outliers to better understand their effect on the results. More effort should be taken to ensure the quality of the OHLC data.
