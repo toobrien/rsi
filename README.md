@@ -19,12 +19,12 @@ long|30|50
 long|20|50
 long|10|50
 
-For each security, I also generate a second set of trades as a "control group". The methodology involves several steps:
+For each security, I also generate a second set of trades as a "control group". The method involves several steps:
 
-1. Estimating the return distribution of the security
+1. Estimating the return distribution of the security.
 1. Using a random walk, produce a time series of equal length to the original security's returns.
-1. Calculate the RSI for these synthetic returns
-1. Enter trades on the original security, using the synthetic security's RSI
+1. Calculate the RSI for these synthetic returns.
+1. Enter trades on the original security, using the synthetic security's RSI.
 
 The synthetic returns are similar to the original security's returns, but random. The synthetic RSI, when applied to the original security's returns, has no meaning, but yields reasonably random entry and exit signals for the control trades. The rough similarity between the original RSI and the synthetic RSI can be assessed visually in the following screenshot. The top subpanel holds the original RSI, and the bottom holds the synthetic series.
 
