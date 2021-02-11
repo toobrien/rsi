@@ -71,3 +71,5 @@ In summary, the RSI provided better-than-random signals for price reversals at e
 ## Further study
 
 To improve the study, I would like to normalize the mae, mfe, and pnl measures by the underlying security's volatility. I would also include measures less sensitive to outliers, or study the outliers to better understand their effect on the results. More effort should be taken to ensure the quality of the OHLC data. Further discussion of mean reversion in financial time series would add context to the conclusion.
+
+Presumably, the RSI would give better signals on time series that score highly on mean reversion tests. Future iterations of the study would do well to adjust or categorize the results by measures of mean reversion in order to test this assumption.
